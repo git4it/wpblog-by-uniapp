@@ -1,9 +1,16 @@
 <template>
-	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view class="text-area">
-			<text class="title">{{title}}</text>
-		</view>
+	<!-- 轮播图 -->
+	<view>
+		<swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" class="swiper-wrapper">
+			<swiper-item class="swiper-item-wrapper">
+				<image src="https://static.256it.com/wp-blog/swiper/it_dl.jpg" class="swiper-item-img"></image>
+				<text class="swiper-item-text">轮播图的文章名称轮播图的文章名称轮播图的文章名称轮播图的文章名称轮播图的文章名称轮播图的文章名称</text>
+			</swiper-item>
+			<swiper-item class="swiper-item-wrapper">
+				<image src="https://static.256it.com/wp-blog/cover/idea.jpg" class="swiper-item-img"></image>
+				<text class="swiper-item-text">轮播图的文章名称轮播图的文章名称轮播图的文章名称轮播图的文章名称轮播图的文章名称轮播图的文章名称</text>
+			</swiper-item>
+		</swiper>
 	</view>
 </template>
 
@@ -24,29 +31,5 @@
 </script>
 
 <style>
-	.content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin-top: 200rpx;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 50rpx;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
-	}
+	@import url("index.css");
 </style>

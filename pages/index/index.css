@@ -1,0 +1,23 @@
+.swiper-wrapper {
+	width: 100%;
+	height: 380upx;
+}
+.swiper-item-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.swiper-item-img {
+    width: 100%;  
+    height: 280upx;   
+}
+
+.swiper-item-text {
+	font-size: 18px;
+	margin-top: 10upx;
+	height: 90upx;
+	text-align: center;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
