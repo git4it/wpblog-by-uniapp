@@ -62,7 +62,28 @@
 				</view>
 			</scroll-view>			
 		</view>
-		
+		<!-- 文章列表 -->
+		<view class="page-block post-list">
+			<view class="post-item" v-for="(item, index) in postListData" :key="index">
+				<image v-if="item.post_medium_image == null || item.post_medium_image == ''" src="../../static/images/uploads/post_cover.jpg" class="post-img"/>
+				<image v-else :src="item.post_medium_image" class="post-img"/>
+				<view class="post-desc">
+				  <view class="post-title">
+					<text>{{item.title.rendered}}</text>
+				  </view>
+				  <view class="post-data">
+					<image src="../../static/images/calendar.png"></image>
+					<text>{{item.post_date}}</text>
+					<image src="../../static/images/comments.png"></image>
+					<text class="">{{item.total_comments}}</text>
+					<image src="../../static/images/home-like.png"></image>
+					<text class="">{{item.like_count}}</text>
+					<image src="../../static/images/pageviews.png"></image>
+					<text class="">{{item.pageviews}}</text>
+				  </view>
+				</view>
+			</view>
+		</view>
 		
 	</view>
 </template>
@@ -71,14 +92,27 @@
 	export default {
 		data() {
 			return {
-				title: 'Hello'
+				postListData: []
 			}
 		},
 		onLoad() {
-
+			let me = this;
+			me.pagePost(1);
 		},
 		methods: {
-
+			pagePost(e) {
+				let me = this;
+				uni.request({
+					url:me.serverUrl + "/posts?page=" + e,
+					method:"GET",
+					success: (res) => {
+						if (res.data != null) {
+							me.postListData = me.postListData.concat(res.data);
+							// console.log(me.postListData);
+						}
+					}
+				});
+			}
 		}
 	}
 </script>
