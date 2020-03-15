@@ -92,24 +92,50 @@
 	export default {
 		data() {
 			return {
-				postListData: []
+				postListData: [],
+				pageNum: 1,
+				pageSize : 10,
+				isLastPage: false
 			}
 		},
 		onLoad() {
 			let me = this;
 			me.pagePost(1);
 		},
+		onReachBottom() {
+			let me = this;
+			
+			if (me.isLastPage) {
+				return;
+			}
+			let pageNum = me.pageNum + 1;
+			me.pagePost(pageNum);
+		},
 		methods: {
-			pagePost(e) {
+			pagePost(pageNum) {
 				let me = this;
+				
+				uni.showLoading({
+					mask: true,
+					title: "请稍后..."
+				});
+				uni.showNavigationBarLoading();
+				
 				uni.request({
-					url:me.serverUrl + "/posts?page=" + e,
+					url:me.serverUrl + '/posts?page=' + pageNum + '&per_page=' + me.pageSize + '&orderby=date&order=desc',
 					method:"GET",
 					success: (res) => {
-						if (res.data != null) {
+						// console.log(res);
+						if (res.statusCode === 200) {
+							if (res.data.length < me.pageSize) {
+								me.isLastPage = true;
+							}
 							me.postListData = me.postListData.concat(res.data);
-							// console.log(me.postListData);
-						}
+						}						
+					},
+					complete: () => {
+						uni.hideNavigationBarLoading();
+						uni.hideLoading();
 					}
 				});
 			}
