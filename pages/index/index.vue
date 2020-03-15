@@ -22,9 +22,9 @@
 			<scroll-view scroll-x="true" class="selected-nav">
 				<view class="selected-nav-item-wrapper">
 					<view class="selected-nav-item">
-						<image src="../../static/images/uploads/wp-blog.png"></image>
+						<image src="../../static/images/uploads/rankings.jpg"></image>
 						<text>
-							官网
+							排行
 						</text>
 					</view>
 				</view>
@@ -41,22 +41,6 @@
 						<image src="../../static/images/uploads/comment.png"></image>
 						<text>
 							留言板
-						</text>
-					</view>
-				</view>
-				<view class="selected-nav-item-wrapper">
-					<view class="selected-nav-item">
-						<image src="../../static/images/uploads/rankings.jpg"></image>
-						<text>
-							排行
-						</text>
-					</view>
-				</view>
-				<view class="selected-nav-item-wrapper">
-					<view class="selected-nav-item">
-						<image src="../../static/images/uploads/miniprogram.png"></image>
-						<text>
-							小程序
 						</text>
 					</view>
 				</view>
@@ -83,18 +67,21 @@
 				  </view>
 				</view>
 			</view>
+			<!-- 无更多文章提示 -->
+			<view v-if="isLastPage" class="no-more">- 无更多文章 -</view>
+			<copyright></copyright>
 		</view>
-		
 	</view>
 </template>
 
 <script>
+	import copyright from '../../components/copyright.vue';
+	
 	export default {
 		data() {
 			return {
 				postListData: [],
 				pageNum: 1,
-				pageSize : 10,
 				isLastPage: false
 			}
 		},
@@ -120,14 +107,15 @@
 					title: "请稍后..."
 				});
 				uni.showNavigationBarLoading();
-				
+				let baseUrl = me.$config.BASE_URL;
+				let pageSize = me.$config.PAGE_SIZE;
 				uni.request({
-					url:me.serverUrl + '/posts?page=' + pageNum + '&per_page=' + me.pageSize + '&orderby=date&order=desc',
+					url:baseUrl + '/posts?page=' + pageNum + '&per_page=' + pageSize + '&orderby=date&order=desc',
 					method:"GET",
 					success: (res) => {
 						// console.log(res);
 						if (res.statusCode === 200) {
-							if (res.data.length < me.pageSize) {
+							if (res.data.length < pageSize) {
 								me.isLastPage = true;
 							}
 							me.postListData = me.postListData.concat(res.data);
@@ -139,6 +127,9 @@
 					}
 				});
 			}
+		},
+		components:{
+			copyright
 		}
 	}
 </script>

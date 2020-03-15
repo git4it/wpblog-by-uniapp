@@ -23,4 +23,11 @@
 	.page-block {
 		background-color: #ffffff;
 	}
+	
+	.copyright {
+		font-size: 14px;
+		text-align: center;
+		color: #c4c4c4;
+		margin: 20upx 0upx 10upx;
+	}
 </style>
