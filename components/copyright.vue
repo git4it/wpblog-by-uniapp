@@ -8,8 +8,8 @@
 	export default {
 		data() {
 			return {
-				siteName:this.$config.SITE_NAME,
-				domain:this.$config.DOMAIN
+				siteName:this.$config.siteName,
+				domain:this.$config.domain
 			};
 		}
 	}

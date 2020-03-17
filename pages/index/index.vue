@@ -101,21 +101,21 @@
 		methods: {
 			pagePost(pageNum) {
 				let me = this;
-				
+				let $config = me.$config;
+
 				uni.showLoading({
 					mask: true,
 					title: "请稍后..."
 				});
 				uni.showNavigationBarLoading();
-				let baseUrl = me.$config.BASE_URL;
-				let pageSize = me.$config.PAGE_SIZE;
+
 				uni.request({
-					url:baseUrl + '/posts?page=' + pageNum + '&per_page=' + pageSize + '&orderby=date&order=desc',
+					url:$config.baseUrl + '/posts?page=' + pageNum + '&per_page=' + $config.pageSize + '&orderby=date&order=desc',
 					method:"GET",
 					success: (res) => {
 						// console.log(res);
 						if (res.statusCode === 200) {
-							if (res.data.length < pageSize) {
+							if (res.data.length < $config.pageSize) {
 								me.isLastPage = true;
 							}
 							me.postListData = me.postListData.concat(res.data);
