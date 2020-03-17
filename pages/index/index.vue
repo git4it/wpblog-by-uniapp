@@ -48,25 +48,29 @@
 		</view>
 		<!-- 文章列表 -->
 		<view class="page-block post-list">
-			<view class="post-item" v-for="(item, index) in postListData" :key="index">
-				<image v-if="item.post_medium_image == null || item.post_medium_image == ''" src="../../static/images/uploads/post_cover.jpg" class="post-img"/>
-				<image v-else :src="item.post_medium_image" class="post-img"/>
-				<view class="post-desc">
-				  <view class="post-title">
-					<text>{{item.title.rendered}}</text>
-				  </view>
-				  <view class="post-data">
-					<image src="../../static/images/calendar.png"></image>
-					<text>{{item.post_date}}</text>
-					<image src="../../static/images/comments.png"></image>
-					<text class="">{{item.total_comments}}</text>
-					<image src="../../static/images/home-like.png"></image>
-					<text class="">{{item.like_count}}</text>
-					<image src="../../static/images/pageviews.png"></image>
-					<text class="">{{item.pageviews}}</text>
-				  </view>
-				</view>
-			</view>
+			<block v-for="(item, index) in postListData" :key="index">
+				<navigator open-type="navigate" :url="'../detail/detail?postId=' + item.id">
+					<view class="post-item">
+						<image v-if="item.post_medium_image == null || item.post_medium_image == ''" src="../../static/images/uploads/post_cover.jpg" class="post-img"/>
+						<image v-else :src="item.post_medium_image" class="post-img"/>
+						<view class="post-desc">
+						  <view class="post-title">
+							<text>{{item.title.rendered}}</text>
+						  </view>
+						  <view class="post-data">
+							<image src="../../static/images/calendar.png"></image>
+							<text>{{item.post_date}}</text>
+							<image src="../../static/images/comments.png"></image>
+							<text class="">{{item.total_comments}}</text>
+							<image src="../../static/images/home-like.png"></image>
+							<text class="">{{item.like_count}}</text>
+							<image src="../../static/images/pageviews.png"></image>
+							<text class="">{{item.pageviews}}</text>
+						  </view>
+						</view>
+					</view>
+				</navigator>
+			</block>
 			<!-- 无更多文章提示 -->
 			<view v-if="isLastPage" class="no-more">- 无更多文章 -</view>
 			<copyright></copyright>
