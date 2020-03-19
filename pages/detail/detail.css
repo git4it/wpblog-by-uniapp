@@ -1,0 +1,32 @@
+.post-content {
+	padding: 20upx 20upx;
+}
+	
+/* 标题 */
+.post-title {
+	font-size: 20px;
+	color: #333;
+	margin-bottom: 24upx;
+}
+
+/* 文章互动数据 */
+.post-data {
+	display: flex;
+	align-items: center;
+	font-size: 12px;
+	color: #959595;
+	margin-bottom: 30upx;
+}
+
+.post-data text {
+	margin-left: 10upx;
+}
+
+.post-data>image {
+	width: 24upx;
+	height: 24upx;
+}
+
+.post-data>image:not(:first-child) {
+	margin-left: 32upx;
+}
