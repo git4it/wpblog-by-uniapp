@@ -4,10 +4,10 @@
 			"path" : "pages/index/index",
 			"style" : {}
 		},
-	    {
-            "path" : "pages/my/my",
-            "style" : {}
-        },
+		{
+		    "path" : "pages/my/my",
+		    "style" : {}
+		},
 		{
             "path" : "pages/detail/detail",
             "style" : {}

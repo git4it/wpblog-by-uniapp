@@ -24,6 +24,7 @@
 		background-color: #ffffff;
 	}
 	
+	/* 版权信息 */
 	.copyright {
 		font-size: 14px;
 		text-align: center;

@@ -1,0 +1,40 @@
+/* 用户信息 */
+.userinfo {
+	display: flex;
+	align-items: center;
+	background-color: #118fff;
+	height: 300upx;
+}
+
+/* 头像 */
+.userinfo-avatar {
+	width: 140upx;
+	height: 140upx;
+	margin-left: 48upx;
+	border-radius: 20upx;
+	background: #f5f7f7;
+}
+
+.userinfo-right {
+	margin-left: 40upx;
+	color: #fff;
+}
+
+.userinfo-nickname {
+	font-size: 20px;
+	display: block;
+}
+
+/* 用户角色 */
+.userinfo-des-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16upx;
+}
+
+.userinfo-role {
+  display: block;
+  font-size: 13px;
+}

@@ -12,8 +12,8 @@
 			</swiper-item>
 		</swiper>
 		
-		<!-- 精选栏目 -->
-		<view class="page-block selected-wrapper">
+		<!-- 精选栏目 暂时注释-->
+		<!-- <view class="page-block selected-wrapper">
 			<view class='selected-subtitle'>
 				<view class='selected-subtitle-left'>精选</view>
 				<view class='selected-subtitle-right'>滑动查看</view>
@@ -45,7 +45,7 @@
 					</view>
 				</view>
 			</scroll-view>			
-		</view>
+		</view> -->
 		<!-- 文章列表 -->
 		<view class="page-block post-list">
 			<block v-for="(item, index) in postListData" :key="index">
@@ -80,7 +80,7 @@
 
 <script>
 	import copyright from '../../components/copyright.vue';
-	
+		
 	export default {
 		data() {
 			return {
